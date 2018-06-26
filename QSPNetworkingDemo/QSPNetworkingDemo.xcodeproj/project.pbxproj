@@ -21,6 +21,10 @@
 		6E2CDAFA20DCFD8F004EA9DC /* QSPParameterConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CDAF020DCFD8F004EA9DC /* QSPParameterConfig.m */; };
 		6E2CDAFB20DCFD8F004EA9DC /* QSPLoadConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CDAF520DCFD8F004EA9DC /* QSPLoadConfig.m */; };
 		6E2CDAFC20DCFD8F004EA9DC /* QSPNetworkingConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CDAF620DCFD8F004EA9DC /* QSPNetworkingConfig.m */; };
+		6E2CDB0520E1D90B004EA9DC /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CDB0420E1D90B004EA9DC /* MasterViewController.m */; };
+		6E2CDB0920E1E0B8004EA9DC /* MasterCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CDB0820E1E0B8004EA9DC /* MasterCellModel.m */; };
+		6E2CDB0C20E1E854004EA9DC /* AutoCancelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CDB0B20E1E854004EA9DC /* AutoCancelViewController.m */; };
+		6E2CDB1020E1ECB1004EA9DC /* LoadClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2CDB0F20E1ECB1004EA9DC /* LoadClass.m */; };
 		9B966DF2A0614C2FD875BE06 /* libPods-QSPNetworkingDemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6CF3B08C746BE352531435F /* libPods-QSPNetworkingDemoUITests.a */; };
 		B04CF21995D38E920418588F /* libPods-QSPNetworkingDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E28477595E88BA561F2EFDB7 /* libPods-QSPNetworkingDemoTests.a */; };
 		C91F98F214AA1EA9C02DAB25 /* libPods-QSPNetworkingDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E9C6402AAFAF226AD1581E /* libPods-QSPNetworkingDemo.a */; };
@@ -78,6 +82,15 @@
 		6E2CDAF420DCFD8F004EA9DC /* QSPParameterConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSPParameterConfig.h; sourceTree = "<group>"; };
 		6E2CDAF520DCFD8F004EA9DC /* QSPLoadConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSPLoadConfig.m; sourceTree = "<group>"; };
 		6E2CDAF620DCFD8F004EA9DC /* QSPNetworkingConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSPNetworkingConfig.m; sourceTree = "<group>"; };
+		6E2CDB0320E1D90B004EA9DC /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		6E2CDB0420E1D90B004EA9DC /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		6E2CDB0720E1E0B8004EA9DC /* MasterCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterCellModel.h; sourceTree = "<group>"; };
+		6E2CDB0820E1E0B8004EA9DC /* MasterCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterCellModel.m; sourceTree = "<group>"; };
+		6E2CDB0A20E1E854004EA9DC /* AutoCancelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoCancelViewController.h; sourceTree = "<group>"; };
+		6E2CDB0B20E1E854004EA9DC /* AutoCancelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoCancelViewController.m; sourceTree = "<group>"; };
+		6E2CDB0D20E1E8A0004EA9DC /* MainDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainDefine.h; sourceTree = "<group>"; };
+		6E2CDB0E20E1ECB1004EA9DC /* LoadClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadClass.h; sourceTree = "<group>"; };
+		6E2CDB0F20E1ECB1004EA9DC /* LoadClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadClass.m; sourceTree = "<group>"; };
 		C1FA8285982EF5BF6041B0D4 /* Pods-QSPNetworkingDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QSPNetworkingDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-QSPNetworkingDemoTests/Pods-QSPNetworkingDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		E28477595E88BA561F2EFDB7 /* libPods-QSPNetworkingDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QSPNetworkingDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6CF3B08C746BE352531435F /* libPods-QSPNetworkingDemoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QSPNetworkingDemoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				6E2CDAE920DCFD8F004EA9DC /* QSPNetworking */,
+				6E2CDAFD20E0FAAF004EA9DC /* Class */,
 				6E2CDAE820DCFD20004EA9DC /* System */,
 			);
 			path = QSPNetworkingDemo;
@@ -190,22 +204,62 @@
 		6E2CDAE920DCFD8F004EA9DC /* QSPNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				6E2CDAEA20DCFD8F004EA9DC /* QSPErrorConfig.m */,
-				6E2CDAEB20DCFD8F004EA9DC /* QSPUploadModel.m */,
-				6E2CDAEC20DCFD8F004EA9DC /* QSPNetworkingManager.m */,
-				6E2CDAED20DCFD8F004EA9DC /* QSPNetworkingConfig.h */,
 				6E2CDAEE20DCFD8F004EA9DC /* QSPNetworkingDefine.h */,
-				6E2CDAEF20DCFD8F004EA9DC /* QSPLoadConfig.h */,
-				6E2CDAF020DCFD8F004EA9DC /* QSPParameterConfig.m */,
-				6E2CDAF120DCFD8F004EA9DC /* QSPErrorConfig.h */,
-				6E2CDAF220DCFD8F004EA9DC /* QSPNetworkingManager.h */,
-				6E2CDAF320DCFD8F004EA9DC /* QSPUploadModel.h */,
-				6E2CDAF420DCFD8F004EA9DC /* QSPParameterConfig.h */,
-				6E2CDAF520DCFD8F004EA9DC /* QSPLoadConfig.m */,
+				6E2CDAED20DCFD8F004EA9DC /* QSPNetworkingConfig.h */,
 				6E2CDAF620DCFD8F004EA9DC /* QSPNetworkingConfig.m */,
+				6E2CDAF420DCFD8F004EA9DC /* QSPParameterConfig.h */,
+				6E2CDAF020DCFD8F004EA9DC /* QSPParameterConfig.m */,
+				6E2CDAEF20DCFD8F004EA9DC /* QSPLoadConfig.h */,
+				6E2CDAF520DCFD8F004EA9DC /* QSPLoadConfig.m */,
+				6E2CDAF120DCFD8F004EA9DC /* QSPErrorConfig.h */,
+				6E2CDAEA20DCFD8F004EA9DC /* QSPErrorConfig.m */,
+				6E2CDAF320DCFD8F004EA9DC /* QSPUploadModel.h */,
+				6E2CDAEB20DCFD8F004EA9DC /* QSPUploadModel.m */,
+				6E2CDAF220DCFD8F004EA9DC /* QSPNetworkingManager.h */,
+				6E2CDAEC20DCFD8F004EA9DC /* QSPNetworkingManager.m */,
 			);
 			name = QSPNetworking;
 			path = ../../QSPNetworking;
+			sourceTree = "<group>";
+		};
+		6E2CDAFD20E0FAAF004EA9DC /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				6E2CDAFF20E0FE61004EA9DC /* Unity */,
+				6E2CDAFE20E0FAD9004EA9DC /* Controller */,
+				6E2CDB0620E1E089004EA9DC /* Model */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		6E2CDAFE20E0FAD9004EA9DC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6E2CDB0320E1D90B004EA9DC /* MasterViewController.h */,
+				6E2CDB0420E1D90B004EA9DC /* MasterViewController.m */,
+				6E2CDB0A20E1E854004EA9DC /* AutoCancelViewController.h */,
+				6E2CDB0B20E1E854004EA9DC /* AutoCancelViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		6E2CDAFF20E0FE61004EA9DC /* Unity */ = {
+			isa = PBXGroup;
+			children = (
+				6E2CDB0D20E1E8A0004EA9DC /* MainDefine.h */,
+				6E2CDB0E20E1ECB1004EA9DC /* LoadClass.h */,
+				6E2CDB0F20E1ECB1004EA9DC /* LoadClass.m */,
+			);
+			path = Unity;
+			sourceTree = "<group>";
+		};
+		6E2CDB0620E1E089004EA9DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6E2CDB0720E1E0B8004EA9DC /* MasterCellModel.h */,
+				6E2CDB0820E1E0B8004EA9DC /* MasterCellModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C03C13D8F1B94631EE03E057 /* Pods */ = {
@@ -417,6 +471,10 @@
 				6E2CDAFA20DCFD8F004EA9DC /* QSPParameterConfig.m in Sources */,
 				6E2CDAFB20DCFD8F004EA9DC /* QSPLoadConfig.m in Sources */,
 				6E2CDAFC20DCFD8F004EA9DC /* QSPNetworkingConfig.m in Sources */,
+				6E2CDB0520E1D90B004EA9DC /* MasterViewController.m in Sources */,
+				6E2CDB0C20E1E854004EA9DC /* AutoCancelViewController.m in Sources */,
+				6E2CDB0920E1E0B8004EA9DC /* MasterCellModel.m in Sources */,
+				6E2CDB1020E1ECB1004EA9DC /* LoadClass.m in Sources */,
 				6E2CDAB820DCFC1C004EA9DC /* AppDelegate.m in Sources */,
 				6E2CDAF720DCFD8F004EA9DC /* QSPErrorConfig.m in Sources */,
 				6E2CDAF820DCFD8F004EA9DC /* QSPUploadModel.m in Sources */,
@@ -592,7 +650,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = QSPNetworkingDemo/System/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jingbei.www.QSPNetworkingDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -607,7 +668,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = QSPNetworkingDemo/System/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jingbei.www.QSPNetworkingDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -621,7 +685,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = QSPNetworkingDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jingbei.www.QSPNetworkingDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -636,7 +704,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = QSPNetworkingDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jingbei.www.QSPNetworkingDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -650,7 +722,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = QSPNetworkingDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jingbei.www.QSPNetworkingDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -664,7 +740,11 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = QSPNetworkingDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jingbei.www.QSPNetworkingDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

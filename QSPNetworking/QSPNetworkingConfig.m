@@ -17,7 +17,7 @@
     
     config.timeoutInterval = 15;
     config.SSLPinningMode = AFSSLPinningModeNone;
-    config.allowInvalidCertificates = YES;
+    config.allowInvalidCertificates = NO;
     config.validatesDomainName = NO;
     
     config.acceptableContentTypes = [NSSet setWithObjects:@"application/json",  @"text/json", @"text/javascript",@"text/html", @"text/plain", nil];
