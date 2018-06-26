@@ -88,12 +88,17 @@ static QSPNetworkingManager *_shareInstance;
     manager.loadConfig = loadConfig;
     manager.conditionOfSuccess = condictionOfSuccess;
 }
-+ (NSURLSessionTask *)defaultCall:(NSString *)apiPath parameters:(NSDictionary *)parameters   cancelDependence:(id)dependence controller:(UIViewController *)controller completion:(QSPCompletionBlock)completion
++ (QSPNetworkingObject *)defaultCall:(NSString *)apiPath parameters:(NSDictionary *)parameters   cancelDependence:(id)dependence controller:(UIViewController *)controller completion:(QSPCompletionBlock)completion
 {
     QSPParameterConfig *parameterConfig = [QSPParameterConfig parameterConfigWithParameters:parameters apiPath:apiPath cancelDependence:dependence controller:controller completion:completion];
     return [self callWithParameterConfig:parameterConfig];
 }
-+ (NSURLSessionTask *)callWithParameterConfig:(QSPParameterConfig *)config
++ (QSPNetworkingObject *)getCall:(NSString *)apiPath parameters:(NSDictionary *)parameters cancelDependence:(id)dependence controller:(UIViewController *)controller completion:(QSPCompletionBlock)completion {
+    QSPParameterConfig *parameterConfig = [QSPParameterConfig parameterConfigWithParameters:parameters apiPath:apiPath cancelDependence:dependence controller:controller completion:completion];
+    parameterConfig.type = QSPNetworkingTypeGET;
+    return [self callWithParameterConfig:parameterConfig];
+}
++ (QSPNetworkingObject *)callWithParameterConfig:(QSPParameterConfig *)config
 {
     return [[self manager] callWithParameterConfig:config];
 }
@@ -113,7 +118,7 @@ static QSPNetworkingManager *_shareInstance;
     }];
 }
 
-- (NSURLSessionTask *)callWithParameterConfig:(QSPParameterConfig *)parameterConfig
+- (QSPNetworkingObject *)callWithParameterConfig:(QSPParameterConfig *)parameterConfig
 {
     AFHTTPSessionManager *sessionManager = parameterConfig.networkingConfig ? [self sessionManagerWithNetworkingConfig:parameterConfig.networkingConfig] : self.sessionManager;
     [self showLoad:parameterConfig];
@@ -129,15 +134,13 @@ static QSPNetworkingManager *_shareInstance;
             [weakSelf failureWithParameterConfig:parameterConfig task:task error:error];
         }];
         
-        [self addDependence:parameterConfig andTask:task];
-        return task;
+        return [self addDependence:parameterConfig andTask:task];
     }
     else
     {
         NSURLSessionDataTask *task = [self extracted:parameterConfig sessionManager:sessionManager weakSelf:weakSelf];
         
-        [self addDependence:parameterConfig andTask:task];
-        return task;
+        return [self addDependence:parameterConfig andTask:task];
     }
 }
 

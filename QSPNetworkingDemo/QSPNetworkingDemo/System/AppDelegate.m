@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "QSPNetworkingManager.h"
+#import "MasterViewController.h"
+#import "MainDefine.h"
 
 @interface AppDelegate ()
 
@@ -14,37 +17,58 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    //配置网络框架
+    [self configNetworking];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    UINavigationController *navCtr = [[UINavigationController alloc] initWithRootViewController:[[MasterViewController alloc] init]];
+    self.window.rootViewController = navCtr;
+    [self.window makeKeyAndVisible];
+    
+    
     return YES;
 }
 
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-}
-
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
-
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-}
-
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+- (void)configNetworking {
+    //创建网络配置对象，控制网络请求
+    QSPNetworkingConfig *networkingConfig = [QSPNetworkingConfig networkingConfigWithBasePath:K_NetService_Base];
+    
+    //创建错误处理配置对象，处理网络、数据错误
+    QSPErrorConfig *errorConfig = [QSPErrorConfig errorConfigWithNetworkingErrorPrompt:^(NSError *error, UIViewController *controller) {
+        if (error.code == -999) {
+            [LoadClass showMessage:K_NetRequestMessage_Cancel toView:self.window];
+        }
+        else if (error.code == -1001)
+        {
+            [LoadClass showMessage:K_NetRequestMessage_TimeOut toView:controller.view];
+        }
+        else
+        {
+            [LoadClass showMessage:K_NetRequestMessage_Failure toView:controller.view];
+        }
+    } dataErrorPrompt:^void(id responseObject, UIViewController *controller) {
+        if (responseObject == nil || [responseObject isKindOfClass:[NSNull class]]) {
+            [LoadClass showMessage:K_NetRequestMessage_NoData toView:controller.view];
+        } else {
+            if ([responseObject[@"status"] intValue] != 1) {
+                NSString *message = responseObject[@"message"] ? responseObject[@"message"] : K_NetRequestMessage_Error;
+                [LoadClass showMessage:message toView:controller.view];
+            }
+        }
+    }];
+    
+    //创建加载处理配置对象，处理加载过程
+    QSPLoadConfig *loadConfig = [QSPLoadConfig loadConfigWithLoadBegin:^(UIViewController *controller){
+        [LoadClass beginLoadWithMessage:K_NetRequestMessage_Load toView:controller.view];
+    } loadEnd:^(UIViewController *controller){
+        [LoadClass endLoadFromView:controller.view];
+    }];
+    
+    //配置网络框架
+    [QSPNetworkingManager configWithNetworkingConfig:networkingConfig errorConfig:errorConfig loadConfig:loadConfig condictionOfSuccess:^BOOL(id responseObject) {
+        return [responseObject[@"status"] integerValue] == 1;
+    }];
 }
 
 

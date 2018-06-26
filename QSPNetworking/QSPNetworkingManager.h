@@ -57,17 +57,28 @@
  @param parameters 参数
  @param dependence 依赖对象
  @param completion 完成的回调
- @return NSURLSessionTask对象
+ @return QSPNetworkingObject对象
  */
-+ (NSURLSessionTask *)defaultCall:(NSString *)apiPath parameters:(NSDictionary *)parameters cancelDependence:(id)dependence controller:(UIViewController *)controller completion:(QSPCompletionBlock)completion;
++ (QSPNetworkingObject *)defaultCall:(NSString *)apiPath parameters:(NSDictionary *)parameters cancelDependence:(id)dependence controller:(UIViewController *)controller completion:(QSPCompletionBlock)completion;
+
+/**
+ get调用
+ 
+ @param apiPath api
+ @param parameters 参数
+ @param dependence 依赖对象
+ @param completion 完成的回调
+ @return QSPNetworkingObject对象
+ */
++ (QSPNetworkingObject *)getCall:(NSString *)apiPath parameters:(NSDictionary *)parameters cancelDependence:(id)dependence controller:(UIViewController *)controller completion:(QSPCompletionBlock)completion;
 
 /**
  使用配置对象调用
 
  @param parameterConfig 配置对象
- @return NSURLSessionTask对象
+ @return QSPNetworkingObject对象
  */
-+ (NSURLSessionTask *)callWithParameterConfig:(QSPParameterConfig *)parameterConfig;
++ (QSPNetworkingObject *)callWithParameterConfig:(QSPParameterConfig *)parameterConfig;
 
 /**
  取消网络请求
