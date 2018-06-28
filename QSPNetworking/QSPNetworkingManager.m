@@ -104,16 +104,20 @@ static QSPNetworkingManager *_shareInstance;
 }
 - (NSURLSessionDataTask * _Nullable)extracted:(QSPParameterConfig *)parameterConfig sessionManager:(AFHTTPSessionManager *)sessionManager weakSelf:(QSPNetworkingManager *const __weak)weakSelf {
     return [sessionManager POST:parameterConfig.apiPath parameters:parameterConfig.parameters constructingBodyWithBlock:^(id <AFMultipartFormData> formData) {
+        //上传文件
         for (QSPUploadModel *uploadModel in parameterConfig.uploadModels) {
             [formData appendPartWithFileData:uploadModel.data name:uploadModel.name fileName:uploadModel.fileName mimeType:uploadModel.mimeType];
         }
     } progress:^(NSProgress * _Nonnull uploadProgress) {
+        //出来进度
         if (parameterConfig.progress) {
             parameterConfig.progress(uploadProgress);
         }
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //成功着陆
         [weakSelf susseccWithParameterConfig:parameterConfig task:task responseObject:responseObject];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        //失败着陆
         [weakSelf failureWithParameterConfig:parameterConfig task:task error:error];
     }];
 }
@@ -153,17 +157,21 @@ static QSPNetworkingManager *_shareInstance;
 
 - (void)susseccWithParameterConfig:(QSPParameterConfig *)parameterConfig task:(NSURLSessionDataTask *)task responseObject:(id)responseObject
 {
+    //打印请求信息
     QSPNetworkingLog(@"\n接口地址：%@\n接口参数：%@\n上传文件：%@\n接口返回：%@", task.currentRequest.URL.absoluteString, parameterConfig.parameters, parameterConfig.uploadModels, responseObject);
     [self removeDependence:parameterConfig andTask:task];
     [self removeLoad:parameterConfig];
     
+    //出来数据错误
     if (parameterConfig.showError) {
+        //选择QSPErrorConfig，这里以parameterConfig的优先级高
         QSPErrorConfig *errorConfig = parameterConfig.errorConfig ? parameterConfig.errorConfig : self.errorConfig;
         if (errorConfig.dataErrorPrompt) {
             errorConfig.dataErrorPrompt(responseObject, parameterConfig.controller);
         }
     }
     
+    //执行成功条件
     if (parameterConfig.executeConditionOfSuccess) {
         if (self.conditionOfSuccess) {
             if (self.conditionOfSuccess(responseObject)) {
@@ -260,7 +268,7 @@ static QSPNetworkingManager *_shareInstance;
 }
 
 /**
- 显示加载动画
+ 执行加载处理
  */
 - (void)showLoad:(QSPParameterConfig *)parameterConfig
 {
@@ -273,7 +281,7 @@ static QSPNetworkingManager *_shareInstance;
 }
 
 /**
- 移除加载动画
+ 执行加载完成处理
  */
 - (void)removeLoad:(QSPParameterConfig *)parameterConfig
 {
@@ -303,6 +311,14 @@ static QSPNetworkingManager *_shareInstance;
         [self cancel];
     }
 }
+- (void)cancel
+{
+    //    QSPNetworkingLog(@"---------------------------------------------------%@%zi", self.task.currentRequest.URL.absoluteString, self.task.state);
+    if (self.task.state != NSURLSessionTaskStateCompleted && self.task.state != NSURLSessionTaskStateCanceling) {
+        QSPNetworkingLog(@"---------------------------------------------------%@取消啦", self.task.currentRequest.URL.absoluteString);
+        [self.task cancel];
+    }
+}
 
 + (instancetype)networkingObjectWithTask:(NSURLSessionTask *)task autoCancel:(BOOL)autoCancel
 {
@@ -316,14 +332,6 @@ static QSPNetworkingManager *_shareInstance;
     }
     
     return self;
-}
-- (void)cancel
-{
-//    QSPNetworkingLog(@"---------------------------------------------------%@%zi", self.task.currentRequest.URL.absoluteString, self.task.state);
-    if (self.task.state != NSURLSessionTaskStateCompleted && self.task.state != NSURLSessionTaskStateCanceling) {
-        QSPNetworkingLog(@"---------------------------------------------------%@取消啦", self.task.currentRequest.URL.absoluteString);
-        [self.task cancel];
-    }
 }
 
 @end

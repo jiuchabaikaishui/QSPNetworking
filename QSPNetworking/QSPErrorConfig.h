@@ -12,12 +12,12 @@
 @interface QSPErrorConfig : NSObject
 
 /**
- 网络错误提示（默认无）
+ 网络错误处理（默认无）
  */
 @property (copy, nonatomic) QSPNetworkingErrorBlock networkingErrorPrompt;
 
 /**
- 数据错误提示（默认无）
+ 数据错误处理（默认无）
  */
 @property (copy, nonatomic) QSPDataErrorBlock dataErrorPrompt;
 
