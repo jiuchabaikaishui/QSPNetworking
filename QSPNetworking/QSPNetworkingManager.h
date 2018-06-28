@@ -51,7 +51,7 @@
 + (instancetype)manager;
 
 /**
- 默认调用
+ 默认调用（POST方式调用，最终转化为callWithParameterConfig方法调用）
 
  @param apiPath api
  @param parameters 参数
@@ -62,7 +62,7 @@
 + (QSPNetworkingObject *)defaultCall:(NSString *)apiPath parameters:(NSDictionary *)parameters cancelDependence:(id)dependence controller:(UIViewController *)controller completion:(QSPCompletionBlock)completion;
 
 /**
- get调用
+ get调用（最终转化为callWithParameterConfig方法调用）
  
  @param apiPath api
  @param parameters 参数
