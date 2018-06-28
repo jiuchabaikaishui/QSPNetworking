@@ -67,7 +67,7 @@ pod 'QSPNetworking'
 
 ### 发送请求
 
-#### 分装了如下三个方法来发送请求，分别为默认方式（post）、get方式、参数配置方式。
+#### 分装了如下三个方法来发送请求，分别为默认方式（post）、get方式、参数配置方式（可以通过配置对象配置各种适合自己的请求）。
 ```
 + (QSPNetworkingObject *)defaultCall:(NSString *)apiPath parameters:(NSDictionary *)parameters cancelDependence:(id)dependence controller:(UIViewController *)controller completion:(QSPCompletionBlock)completion;
 + (QSPNetworkingObject *)getCall:(NSString *)apiPath parameters:(NSDictionary *)parameters cancelDependence:(id)dependence controller:(UIViewController *)controller completion:(QSPCompletionBlock)completion;
